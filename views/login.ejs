@@ -1,0 +1,38 @@
+<html>
+  <nav>
+    <li>Home</li>
+  </nav>
+  <link rel="stylesheet" href="/styles.css" class="href" />
+  <form action="/login">
+    <h2>Login</h2>
+    <label for="email">Email</label>
+    <input type="text" name="email" required />
+    <div class="email error"></div>
+    <label for="password">Password</label>
+    <input type="password" name="password" required />
+    <div class="password error"></div>
+    <button>login</button>
+  </form>
+  <script>
+    const form = document.querySelector("form");
+    const emailError = document.querySelector(".email.error");
+    const parsswordError = document.querySelector(".password.error");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = form.email.value;
+      const password = form.password.value;
+
+      const res = await fetch("/login_post", {
+        body: JSON.stringify({ email, password }),
+        headers: { "content-type": "application/json" },
+        method: "post",
+      });
+      const data = await res.json();
+      if (data.user) {
+        location.assign('/');
+      } else {
+        emailError.textContent = data.err;
+      }
+    });
+  </script>
+</html>

@@ -1,0 +1,49 @@
+<html>
+  <nav>
+    <li>Home</li>
+  </nav>
+  <link rel="stylesheet" href="/styles.css" class="href" />
+  <form action="/signup">
+    <h2>Sign Up</h2>
+
+    <label for="email"> Email</label>
+    <input type="text" name="email" required />
+    <div class="email error"></div>
+    <label for="password"> Password</label>
+    <input type="password" name="password" required />
+    <label for="password"> Confirm Password</label>
+    <input type="password" name="password_confirmation" required />
+    <div class="password error"></div>
+    <button type="submit">Sign up</button>
+  </form>
+  <script>
+    const form = document.querySelector("form");
+    const emailError = document.querySelector(".email.error");
+    const parsswordError = document.querySelector(".password.error");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = form.email.value;
+      const password = form.password.value;
+      const confirmPassword = form.password_confirmation.value;
+
+      if (password != confirmPassword) {
+        alert("password doesn't match");
+      } else {
+        const res = await fetch("/signup", {
+          body: JSON.stringify({ email, password, confirmPassword }),
+          headers: { "content-type": "application/json" },
+          method: "post",
+        });
+            const data = await res.json();
+            console.log(data);
+        if(data.user){
+          location.assign('/');
+        }else{
+          console.log(data.err);
+          emailError.textContent = data.err.email;
+          parsswordError.textContent = data.err.password;
+        }
+      }
+    });
+  </script>
+</html>

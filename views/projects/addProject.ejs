@@ -1,0 +1,47 @@
+
+<%- include('../partials/header'); -%>
+<main class="main" id ="main">
+
+  <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add Project</h5>
+  
+        <!-- Vertical Form -->
+        <form class="row g-3" action="/store/project" method="post"
+        enctype="multipart/form-data">
+          <div class="col-12">
+            <label for="inputEmail4" class="form-label">Select Category</label>
+            <select class="form-control" name="category" aria-label="Default select example">
+               
+                <option value="1">Web Develpment</option>
+                <option value="2">Mobile Development</option>
+                <option value="3">Graphics</option>
+                <option value="4">Other</option>
+              </select>
+          </div>
+          <div class="col-12">
+            <label for="inputEmail4" class="form-label">Title</label>
+            <input type="text" required class="form-control" name="title">
+          </div>
+          <div class="col-6">
+            <label for="inputPassword4" class="form-label">Sub Title</label>
+            <input type="text" required class="form-control" name="subTitle">
+          </div>
+          <div class="col-6">
+            <label for="inputAddress" class="form-label">Image</label>
+            <input type="file"  class="form-control" required name="image">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Project Link</label>
+            <input type="text" required class="form-control" name="link" placeholder="link to your project">
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            
+          </div>
+        </form><!-- Vertical Form -->
+  
+      </div>
+    </div>
+</main>
+<%- include('../partials/footer'); -%>

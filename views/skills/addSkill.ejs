@@ -1,0 +1,36 @@
+
+<%- include('../partials/header'); -%>
+<main class="main" id ="main">
+
+  <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add Skill</h5>
+  
+        <!-- Vertical Form -->
+        <form class="row g-3" action="/store/skill" method="post">
+          <div class="col-12">
+            <label for="inputNanme4"  class="form-label">Skill Name</label>
+            <input type="text" required class="form-control" name="skillName">
+          </div>
+          <div class="col-12">
+            <label for="inputEmail4" class="form-label">Average(From 100)</label>
+            <input type="text" required class="form-control" name="average">
+          </div>
+          <div class="col-6">
+            <label for="inputPassword4" class="form-label">Select Skill Type</label>
+            <select class="form-control" name="skillType" aria-label="Default select example">
+               
+                <option value="personal">Personal Skill</option>
+                <option value="professional">Professional Skill</option>
+              </select>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            
+          </div>
+        </form><!-- Vertical Form -->
+  
+      </div>
+    </div>
+</main>
+<%- include('../partials/footer'); -%>

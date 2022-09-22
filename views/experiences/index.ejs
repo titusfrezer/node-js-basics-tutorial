@@ -1,0 +1,70 @@
+<%- include('../partials/header'); -%>
+<link href="/css/data-table.css" rel="stylesheet" />
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Experiences</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item">Experiences</li>
+        <li class="breadcrumb-item active">All</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <a href="/add/experience"
+              ><h5 class="card-title">Add New Experience</h5></a
+            >
+
+            <!-- Table with stripped rows -->
+            <table class="table datatable">
+              <thead>
+                <tr>
+                  <!-- <th scope="col">#</th> -->
+                  <th scope="col">Name</th>
+                  <th scope="col">Position</th>
+                  <th scope="col">Date From</th>
+                  <th scope="col">Date To</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% experiences.forEach(ex => { %>
+                <tr>
+                  <td><%= ex.companyName %></td>
+                  <td><%= ex.jobRole %></td>
+                  <td><%= ex.dateFrom.getFullYear() %></td>
+                  <td><%= ex.dateTo.getFullYear() %></td>
+                  <td>
+                    <a href="/edit/experience/<%=ex._id%>"
+                      ><i class="bi bi-pencil"></i
+                    ></a>
+                  </td>
+                  <td>
+                    <a href="/delete/experience/<%= ex._id %>"
+                      ><i class="bi bi-trash"></i
+                    ></a>
+                  </td>
+                </tr>
+
+                <% }) %>
+              </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End #main -->
+
+<script src="/js/data-table.js"></script>
+<script src="/js/tinymce.min.js"></script>
+<%- include('../partials/footer'); -%>
